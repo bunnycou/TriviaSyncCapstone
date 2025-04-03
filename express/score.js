@@ -1,23 +1,15 @@
-export function scoreSubmission(submissions, answers) { // return int score, currently 1 point for each correct answer
+export function scoreSubmission(submissions, answers, startTime) { // return int score, currently 1 point for each correct answer
     let score = 0
+    let time = Math.floor((new Date().getTime()/1000) - startTime)
 
     for (let i = 0; i < submissions.length; i++) {
         if (submissions[i].selectedAnswer == answers[i]) { score++ }
     }
 
     return score
-    // if (submissions.length == answers.length && submissions.length > 0 && answers.length > 0) { // assert that we have submissions to compare to each answer
-    //     for (let i = 0; i < submissions.length; i++) {
-    //         if (isCorrect(submissions[i], answers[i])) {
-    //             score++;
-    //         }
-    //     }
-    //     return score
-    // } else {
-    //     return -1 // returning -1 to indicate there was an error, probably will never happen
-    // }
 }
 
+// code for when quiz was extended response
 // function isCorrect(submission, answer) { // return bool correct, placeholder
 //     // return parse(submission) == parse(answer)
 //     submission = parse(submission)

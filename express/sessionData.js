@@ -1,8 +1,9 @@
 export class Session {
     constructor(questions, id) {
         this.id = id
-        this.questions = this.getQuestionsOrdered(questions)
+        this.questions = randomSort(questions)
         this.questionsPublic = this.getQuestionsPublic()
+        this.startTime = Math.floor(new Date().getTime()/1000)
         this.wsc = null
     }
 
@@ -12,19 +13,6 @@ export class Session {
             answers.push(question.answer)
         })
         return answers
-    }
-
-    getQuestionsOrdered(questions) {
-        let questionsTemp = questions
-        let questionsOrdered = []
-
-        while (questionsTemp.length > 0) {
-            let randomnum = Math.floor(Math.random() * questionsTemp.length)
-            questionsOrdered.push(questionsTemp[randomnum])
-            questionsTemp.splice(randomnum, 1)
-        }
-
-        return questionsOrdered
     }
 
     getQuestionsPublic() {
@@ -39,17 +27,10 @@ class PublicData {
     }
 
     questionsRandom(questions) {
-        //let publicQuestionsTemp = []
         let publicQuestions = []
         questions.forEach(question => {
             publicQuestions.push(new QuestionPublic(question.question, question.answer, question.choices, question.category))
         });
-
-        // while (publicQuestionsTemp.length > 0) {
-        //     let randomnum = Math.floor(Math.random() * publicQuestionsTemp.length)
-        //     publicQuestions.push(publicQuestionsTemp[randomnum])
-        //     publicQuestionsTemp.splice(randomnum, 1)
-        // }
         return publicQuestions
     }
 }
@@ -63,18 +44,19 @@ class QuestionPublic {
 
     randomChoices(answer, choices) {
         let options = [answer, choices[0], choices[1], choices[2]]
-        let randoms = []
-        
-        while (options.length > 0) {
-            let randomnum = Math.floor(Math.random()*options.length)
-            randoms.push(options[randomnum])
-            options.splice(randomnum, 1)
-        }
-
-        return randoms
+        return randomSort(options)
     }
 }
 
-function randomSort() {
+function randomSort(original) {
+    let origarr = original
+    let retarr = []
 
+    while (origarr.length > 0) {
+        let index = Math.floor(Math.random()*origarr.length)
+        retarr.push(origarr[index])
+        origarr.splice(index, 1)
+    }
+
+    return retarr
 }

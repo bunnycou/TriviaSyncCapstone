@@ -13,50 +13,19 @@ app.use(express.json());
 
 app.use(express.static("public"))
 
-// app.get('/', (req, res) => {
-//   res.sendFile(page("index"))
-// })
-
-// app.get("/quiz", async (req, res) => {
-//   if ("sessionId" in req.query && req.query.sessionId != "") {
-//     res.sendFile(page("quiz"))
-//   } else {
-//     let questions = await database.getQuestions("TES", 3)
-//     let sessionId = sessions.createSession(questions[0], questions[1])
-//     res.redirect(`/quiz?sessionId=${sessionId}`)
-//   }
-// })
-
-// app.get("/scores", (req, res) => {
-//   res.sendFile(page("scores"))
-// })
-
 app.get("/questions", async (req, res) => {
-  // if ("sessionId" in req.query && req.query.sessionId != "") {
-  //   let sessionId = req.query.sessionId
-  //   let session = sessions.getSession(sessionId)
-  //   if (session != null) {
-  //     res.send(JSON.stringify(sessions.getSession(req.query.sessionId).questions))
-  //   } else {
-  //     res.send("No Existing Session")
-  //   }
-  // } else {
-  //   res.send("Need Session Id")
-  // }
-  
   let questions = await database.getQuestions()
   let session = sessions.createSession(questions)
   res.send(session.questionsPublic)
 })
 
 app.post("/submit", async (req, res) => {
-  console.log(req.body)
   const {name, submissions, sessionId} = req.body
 
   let session = sessions.getSession(sessionId)
   let answers = session.getAnswers()
-  console.log(answers)
-  let score = scoreSubmission(submissions, answers)
+  let startTime = session.startTime
+  let score = scoreSubmission(submissions, answers, startTime)
 
   await database.submitScore(name, score)
   wssBroadcastScores()
