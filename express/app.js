@@ -13,6 +13,10 @@ app.use(express.json());
 
 app.use(express.static("public"))
 
+app.get("/*", (req, res) => {
+  res.sendFile(page("index.html"))
+})
+
 app.get("/questions", async (req, res) => {
   let questions = await database.getQuestions()
   let session = sessions.createSession(questions)
@@ -53,7 +57,7 @@ async function wssBroadcastScores() {
 }
 
 function page(name) {
-  let retVal = __dirname + "/pages/" + name
+  let retVal = __dirname + "/public/" + name
   if (retVal.endsWith(".html")) {
     return retVal
   } else {

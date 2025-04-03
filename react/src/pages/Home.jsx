@@ -19,14 +19,6 @@ function Home() {
   <div class="rightcolumn">
     <div class="card">
       <MiniLeaderboard/>
-      
-     
-    </div>
-
-    <div class="card">
-      <h3>Submit Questions</h3>
-      <p>Help supply TriviaSync with quiz questions</p>
-      <div class='fakeimg'>Link</div>
     </div>
   </div>
 </div>

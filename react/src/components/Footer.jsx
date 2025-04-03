@@ -11,7 +11,7 @@ function Footer() {
                     <div className="footer-content">
                         <Link to="/">Home</Link>
                         <Link to="/about">About</Link>
-                        <Link to="/quizzes">Quizzes</Link>
+                        <Link to="/quizhome">Quizzes</Link>
                         <Link to="/leaderboards">Leaderboards</Link>
                     </div>
                     <div className="footer-content">

@@ -42,13 +42,13 @@ const MiniLeaderboard = () => {
         {miniLeaderboardData.length > 0 ? (
           miniLeaderboardData.map((player, index) => (
             <div
-              key={index} // Using index since no unique IDs
-              className={`mini-leaderboard-item ${index <= 3 ? 'top-three' : ''}`}
+              key={player.username} // Using index since no unique IDs
+              className={`mini-leaderboard-item ${index <= 2 ? 'top-three' : ''}`}
             >
               <span className="rank">
-                {index <= 3 ? (
+                {index <= 2 ? (
                   <span className={`medal medal-${index}`}>
-                    {index === 1 ? '🥇' : index === 2 ? '🥈' : '🥉'}
+                    {index === 0 ? '🥇' : index === 1 ? '🥈' : '🥉'}
                     </span>
                 ) : (
                   index

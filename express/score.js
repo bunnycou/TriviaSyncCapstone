@@ -13,11 +13,11 @@ function multiplier(score, time) { // makes scores not just 0-5
     const BaseMultiplier = 5
     const MaxTimeMultiplier = 10
     const MaxTimeElapsed = 120
-    const TimeMultiplier = MaxTimeMultiplier - (time/MaxTimeElapsed) * (MaxTimeMultiplier-1)
+    const TimeMultiplier = Math.max(MaxTimeMultiplier - (time/MaxTimeElapsed) * (MaxTimeMultiplier-1), 1)
 
     let total = score * BaseMultiplier * TimeMultiplier
 
-    return total
+    return Math.floor(total)
 }
 
 // code for when quiz was extended response
