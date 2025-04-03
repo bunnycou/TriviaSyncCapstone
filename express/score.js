@@ -6,7 +6,18 @@ export function scoreSubmission(submissions, answers, startTime) { // return int
         if (submissions[i].selectedAnswer == answers[i]) { score++ }
     }
 
-    return score
+    return multiplier(score, time)
+}
+
+function multiplier(score, time) { // makes scores not just 0-5
+    const BaseMultiplier = 5
+    const MaxTimeMultiplier = 10
+    const MaxTimeElapsed = 120
+    const TimeMultiplier = MaxTimeMultiplier - (time/MaxTimeElapsed) * (MaxTimeMultiplier-1)
+
+    let total = score * BaseMultiplier * TimeMultiplier
+
+    return total
 }
 
 // code for when quiz was extended response
