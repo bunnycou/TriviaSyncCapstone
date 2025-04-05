@@ -1,0 +1,1 @@
+node -v && cd express && npm install && cd ../react && npm install
