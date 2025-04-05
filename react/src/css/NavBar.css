@@ -54,7 +54,7 @@
   grid-column: 6/span 2;
 
   height: 8vw;
-  border: 2px,0px,0px,2px solid black
+  /* border: 2px,0px,0px,2px solid black */
 }
 .navbar-image img {
   height: 100%;
@@ -85,10 +85,10 @@
   grid-column: 2/ span 4;
   grid-row:1 ;
   display: flex;
-  justify-content:end;
+  /* justify-content:end; */
   gap: 0; /* Remove gap between links */
   object-fit: contain;
-  border-right: .3vw solid black;
+  z-index: 1;
 }
 
 .nav-link {
@@ -100,6 +100,7 @@
   transition: background-color 0.2s, transform 0.2s; /* Add transition for transform */
   text-decoration: none;
   border-left: .25vw solid black;
+  border-right: .25vw solid black;
   border-top: .3vw solid black; /* Add black border */
   border-bottom: .15vw solid black;
 }
@@ -138,34 +139,5 @@
 }
 
 .nav-link:nth-child(7) {
-  background-color: #EE82EE;
-}
-
-/* Cycle through the colors if more than 7 links are added */
-.nav-link:nth-child(8) {
-  background-color: #FF0000;
-}
-
-.nav-link:nth-child(9) {
-  background-color: #FFA500;
-}
-
-.nav-link:nth-child(10) {
-  background-color: #FFFF00;
-}
-
-.nav-link:nth-child(11) {
-  background-color: #008000;
-}
-
-.nav-link:nth-child(12) {
-  background-color: teal;
-}
-
-.nav-link:nth-child(13) {
-  background-color: #4B0082;
-}
-
-.nav-link:nth-child(14) {
   background-color: #EE82EE;
 }

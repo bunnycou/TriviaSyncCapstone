@@ -51,7 +51,7 @@ const MiniLeaderboard = () => {
                     {index === 0 ? '🥇' : index === 1 ? '🥈' : '🥉'}
                     </span>
                 ) : (
-                  index
+                  index + 1
                 )}
               </span>
               <span className="name">{player.username}</span>

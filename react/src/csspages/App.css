@@ -25,7 +25,7 @@
     url('../assets/sidepatternleft.png') repeat-y left top, /* Left repeating pattern */
     url('../assets/sidepatternright.png') repeat-y center top, /* Right repeating pattern */
     url('../assets//pngitems/bluishpattern.png') repeat bottom center,
-    linear-gradient(0deg,#c00000, #6a11cb, #2575fc); /* Middle solid color (or use a gradient) */
+    linear-gradient(180deg, #053ea1, #6a11cb, #c00000); /* Middle solid color (or use a gradient) */
     
   background-size: 
     

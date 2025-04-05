@@ -66,6 +66,10 @@
     align-items: center; /* Align items vertically in the center */
      
   }
+  /* Username text input */
+  .username-input {
+    width: 70%;
+  }
   /* Submit button */
   .quiz-submit-button {
     background: linear-gradient(135deg, #ff5722, #e64a19); /* Orange gradient for button */

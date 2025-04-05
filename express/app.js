@@ -13,14 +13,14 @@ app.use(express.json());
 
 app.use(express.static("public"))
 
-app.get("/*", (req, res) => {
-  res.sendFile(page("index.html"))
-})
-
 app.get("/questions", async (req, res) => {
   let questions = await database.getQuestions()
   let session = sessions.createSession(questions)
   res.send(session.questionsPublic)
+})
+
+app.get("/*", (req, res) => {
+  res.sendFile(page("index.html"))
 })
 
 app.post("/submit", async (req, res) => {

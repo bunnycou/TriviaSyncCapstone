@@ -9,7 +9,7 @@
 }
 
 .footer {
-    background-color: orangered; /* Example background color */
+    background-color: red; /* Example background color */
     color: black;
     text-align: center;
     
@@ -37,7 +37,7 @@
     color:black;
     text-decoration: none;
     padding-right: .9vw;
-    border-right: #33ff00 thin dotted;
+    border-right: black thin solid;
     margin-right: 2vw;
 }
 
@@ -54,7 +54,7 @@
     height: 90%;
     color: white;
     border-radius: 20px;
-    box-shadow:2px 2px 5px #33ff00 ;
+    /* box-shadow:2px 2px 5px #33ff00 ; */
     padding: 0.2vw .2vw;
 
     cursor: pointer;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../css/Leaderboard.css';
-
+const ServerIP = "localhost"
 const Leaderboard = () => {
   const [leaderboardData, setLeaderboardData] = useState([]);
   const [viewMode, setViewMode] = useState('top10');
@@ -8,7 +8,7 @@ const Leaderboard = () => {
 
   useEffect(() => {
     // Replace with your actual WebSocket server URL
-    const socket = new WebSocket('ws://localhost:8080'); // Update to local mock server
+    const socket = new WebSocket(`ws://${ServerIP}:8080`); // Update to local mock server
 
     socket.onopen = () => {
       console.log('WebSocket connection established');
@@ -44,12 +44,12 @@ const Leaderboard = () => {
                 className={`leaderboard-item ${index <= 2 ? 'top-three' : ''}`}
               >
                 <span className="rank">
-                  {index <= 3 ? (
+                  {index <= 2 ? (
                     <span className={`medal medal-${index}`}>
                       {index === 0 ? '🥇' : index === 1 ? '🥈' : '🥉'}
                     </span>
                   ) : (
-                    index
+                    index + 1
                   )}
                 </span>
                 <span className="name">{player.username}</span>
