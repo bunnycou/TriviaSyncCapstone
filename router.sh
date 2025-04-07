@@ -3,7 +3,7 @@
 sudo apt update -y
 sudo apt upgrade -y
 # install prereqs
-sudo apt install procps iproute2 dnsmasq iptabels hostapd iw haveged
+sudo apt install -y procps iproute2 dnsmasq iptabels hostapd iw haveged
 # install lnxrouter
 sudo curl -o /usr/local/bin/lnxrouter https://raw.githubusercontent.com/bunnycou/linux-router/refs/heads/master/lnxrouter
 # create run script
