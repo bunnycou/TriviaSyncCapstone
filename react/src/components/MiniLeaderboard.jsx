@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import '../css/MiniLeaderboard.css';
-
+const ServerIP = "triviasync.com"
 const MiniLeaderboard = () => {
   const [miniLeaderboardData, setMiniLeaderboardData] = useState([]);
 
   useEffect(() => {
     // Replace with your actual WebSocket server URL
-    const socket = new WebSocket('ws://localhost:8080'); // Update to local mock server
+    const socket = new WebSocket(`ws://${ServerIP}:8080`); // Update to local mock server
 
     socket.onopen = () => {
       console.log('WebSocket connection established');

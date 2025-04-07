@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../css/Leaderboard.css';
-const ServerIP = "localhost"
+const ServerIP = "triviasync.com"
 const Leaderboard = () => {
   const [leaderboardData, setLeaderboardData] = useState([]);
   const [viewMode, setViewMode] = useState('top10');
