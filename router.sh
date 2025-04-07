@@ -15,4 +15,4 @@ echo "192.168.12.5 triviasync.com www.triviasync.com" | sudo tee -a /etc/hosts
 # disable dewfault dnsmasq that conflicts with lnxrouter
 sudo systemctl disable dnsmasq
 # suggest reboot
-echo "It is recommended to sudo reboot to apply all changes before running"
+echo "It is recommended to sudo reboot to apply all changes before running" 
