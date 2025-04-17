@@ -5,7 +5,7 @@ import { scoreSubmission } from "./score.js"
 import * as sessions from "./sessions.js"
 import * as database from "./database.js"
 const app = express()
-const port = 3000
+const port = 80
 const wss = new ws.WebSocketServer({port:8080})
 const __dirname = path.resolve()
 
@@ -31,25 +31,31 @@ app.post("/submit", async (req, res) => {
   let startTime = session.startTime
   let score = scoreSubmission(submissions, answers, startTime)
 
-  await database.submitScore(name, score)
-  wssBroadcastScores()
+  let newname = await database.submitScore(name, score)
 
   let position = database.getPosition(name, score)
   let data = { score: score, position: position, answers: answers }
 
+  console.log(`Session ${sessionId} got ${score}pts as ${newname}`)
+  wssBroadcastScores()
   sessions.deleteSession(sessionId)
+
   res.send(data)
 })
 
-app.listen(port, () => {
-  console.log(`CapstoneFirstDraft listening at http://localhost:${port}`)
+app.listen(port, async () => {
+  try { await database.getConnection(); console.log("Database Online") }
+  catch { console.log("Database Offline. Server will crash without Database.") }
+  console.log(`TriviaSync listening at http://localhost:${port}`)
 })
 
 wss.on("connection", async function open(ws) {
   ws.send(JSON.stringify(await database.getScores()))
+  console.log("New Client connected, sending Leaderboard Data")
 })
 
 async function wssBroadcastScores() {
+  console.log("New score entered, broadcasting to clients.")
   let data = JSON.stringify(await database.getScores())
   wss.clients.forEach(client => {
     client.send(data)
