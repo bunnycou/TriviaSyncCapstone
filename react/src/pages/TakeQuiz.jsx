@@ -4,7 +4,7 @@ import QuizSubmission from '../components/quizsubmission.jsx'; // Adjust the pat
 function TakeQuiz(){
     return (
         <div>
-            
+            <h1 className='PinkGreen'>Quiz - Compete with Others </h1>
             <QuizSubmission />
         </div>
     );

@@ -26,15 +26,19 @@ app.get("/*", (req, res) => {
 app.post("/submit", async (req, res) => {
   const {name, submissions, sessionId} = req.body
 
+  let endTime = Math.floor(new Date().getTime()/1000)
+
   let session = sessions.getSession(sessionId)
   let answers = session.getAnswers()
   let startTime = session.startTime
+  let timeElapsed = endTime - startTime
   let score = scoreSubmission(submissions, answers, startTime)
 
   let newname = await database.submitScore(name, score)
 
   let position = database.getPosition(name, score)
-  let data = { score: score, position: position, answers: answers }
+  
+  let data = { score: score, position: position, answers: answers, time: timeElapsed }
 
   console.log(`Session ${sessionId} got ${score}pts as ${newname}`)
   wssBroadcastScores()

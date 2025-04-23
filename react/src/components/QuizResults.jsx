@@ -1,14 +1,15 @@
 import React from 'react';
 import MiniLeaderboard from '../components/MiniLeaderboard';
 
-const QuizResults = ({ score, answers, questions, correctAnswers, setShowResults }) => {
+const QuizResults = ({ score, answers, time, questions, correctAnswers, setShowResults }) => {
   return (
     <div className="quiz-results">
-      <h2>Quiz Complete!</h2>
+      <h1>Quiz Complete!</h1>
       <p>Your score: {score}</p>
       <p>
         You got {numberCorrect(answers, correctAnswers)} out of {questions.length} correct
       </p>
+      <p>Your time: {formatTime(time)}</p>
       <button onClick={() => setShowResults(true)} className="quiz-submit-button">
         See Results
       </button>
@@ -27,5 +28,12 @@ function numberCorrect(answer, correctAnswers) {
   }
   return total
 }
+
+// Format elapsed time as mm:ss
+const formatTime = (timeInSeconds) => {
+  const minutes = Math.floor(timeInSeconds / 60);
+  const seconds = timeInSeconds % 60;
+  return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+};
 
 export default QuizResults;

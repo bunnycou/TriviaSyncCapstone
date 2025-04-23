@@ -9,18 +9,21 @@
     margin: 0px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     font-family: 'Namaku', sans-serif;
   }
   
   .mini-leaderboard h2 {
     text-align: center;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bold;
-    color: #fff;
-    background: linear-gradient(90deg, #ff8a65, #ff5722); /* Orange gradient from view-btn */
+    text-shadow:2px 2px 2px #000000;
+    color: #ff0080;
+    background: linear-gradient(120deg, #58fc9c, #29ff22, #29ff22,#29f57e,#58fc9c); /* Orange gradient from view-btn */
     padding: 8px;
     border-radius: 8px;
+    border:solid 3px #ff0080;
     margin-bottom: 15px;
     width: 100%;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -30,6 +33,7 @@
     width: 95%;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: .5vh;
   }
   
@@ -37,11 +41,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0px;
+    gap: 10px; /* Adds spacing between child elements */
+    padding: 8px; /* Adds padding for better spacing */
     background: linear-gradient(90deg, #22eec4, #aafbe7); 
     border-radius: 8px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     transition: transform 0.2s, box-shadow 0.3s;
+    flex-grow: 1; /* Ensures items stretch evenly */
+    width: 100%; /* Ensures uniform width */
   }
   
   .mini-leaderboard-item:hover {
@@ -61,27 +68,28 @@
   .mini-leaderboard-item.top-three:nth-child(3) {
     background: linear-gradient(90deg, #ff8a65, #f4511e); /* Warm bronze */
   }
-  
   .rank {
     font-weight: bold;
     font-size: 18px;
-    width: 40px;
+    min-width: 40px; /* Ensures consistent width */
     text-align: center;
     color: #d81b60; /* Deep pink for contrast */
   }
+  
   
   .medal {
     font-size: 24px;
     animation: pulse 1.5s infinite;
   }
-  
   .name {
     flex-grow: 1;
     font-size: 16px;
     font-weight: 600;
     padding-left: 10px;
+    text-align: left; /* Ensures proper alignment */
     color: #424242; /* Dark gray for readability */
   }
+  
   
   .score {
     font-size: 16px;

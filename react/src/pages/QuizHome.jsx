@@ -27,12 +27,6 @@ function QuizHome() {
       
      
     </div>
-
-    <div class="card">
-      <h3>Submit Questions</h3>
-      <p>Help supply TriviaSync with quiz questions</p>
-      <div class='fakeimg'>Link</div>
-    </div>
   </div>
 </div>
     </div>

@@ -100,10 +100,10 @@
     margin-bottom: 1vw;
   }
   
-  .quiz-results h2 {
+  .quiz-results h1 {
     font-size: 32px;
-    color: #4caf50; /* Green for success */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    color: #4cff52; /* Green for success */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   }
   
   .quiz-results p {
@@ -173,3 +173,11 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
   }
   
+  .quiz-timer {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffeb3b; /* Bright yellow for visibility */
+  text-shadow: rgba(0, 0, 0,.6) 1px 1px 4px;
+  text-align: right;
+  margin-bottom: 20px;
+}

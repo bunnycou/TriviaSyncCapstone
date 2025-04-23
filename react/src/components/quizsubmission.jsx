@@ -4,6 +4,7 @@ import UsernameForm from './UsernameForm';
 import QuizQuestion from './QuizQuestion';
 import QuizResults from './QuizResults';
 import DetailedResults from './DetailedResults';
+import Timer from './Timer';
 
 const QuizSubmission = () => {
   const [questions, setQuestions] = useState([]);
@@ -13,31 +14,27 @@ const QuizSubmission = () => {
   const [isComplete, setIsComplete] = useState(false);
   const [score, setScore] = useState(null);
   const [correctAnswers, setCorrectAnswers] = useState([]);
+  const [timeElapsed, setTimeElapsed] = useState(0);
   const [showResults, setShowResults] = useState(false);
   const [username, setUsername] = useState('');
   const [quizStarted, setQuizStarted] = useState(false);
 
-  useEffect(() => {
-    // Fetch questions and session ID from the API
-    const fetchQuizData = async () => {
-      try {
-        const response = await fetch('/questions'); 
-        if (!response.ok) {
-          throw new Error('Failed to fetch quiz data');
-        }
-        const data = await response.json();
-        console.log('Fetched Data:', data);
-        console.log('Questions:', data.questions);
-        console.log('Session ID:', data.sessionId);
-        setQuestions(data.questions); // Assuming the API returns { questions: [...] }
-        setSessionId(data.sessionId); // Assuming the API returns { sessionId: '...' }
-      } catch (error) {
-        console.error('Error fetching quiz data:', error);
+  const fetchQuizData = async () => {
+    try {
+      const response = await fetch('/questions'); 
+      if (!response.ok) {
+        throw new Error('Failed to fetch quiz data');
       }
-    };
-
-    fetchQuizData();
-  }, []);
+      const data = await response.json();
+      console.log('Fetched Data:', data);
+      console.log('Questions:', data.questions);
+      console.log('Session ID:', data.sessionId);
+      setQuestions(data.questions); // Assuming the API returns { questions: [...] }
+      setSessionId(data.sessionId); // Assuming the API returns { sessionId: '...' }
+    } catch (error) {
+      console.error('Error fetching quiz data:', error);
+    }
+  };
 
   const handleAnswerChange = (selectedOption) => {
     const updatedAnswers = [...answers];
@@ -64,6 +61,7 @@ const QuizSubmission = () => {
       const data = await response.json();
       setScore(data.score); // Assuming the server returns { score: 0.8 }
       setCorrectAnswers(data.answers)
+      setTimeElapsed(data.time)
       setIsComplete(true);
     } catch (error) {
       console.error('Error submitting quiz:', error);
@@ -87,10 +85,13 @@ const QuizSubmission = () => {
           username={username}
           setUsername={setUsername}
           setQuizStarted={setQuizStarted}
+          fetchQuizData={fetchQuizData}
         />
       ) : questions.length === 0 ? (
         <p>Loading questions...</p>
       ) : !isComplete ? (
+      <>
+        <Timer isRunning={quizStarted && !isComplete} />
         <QuizQuestion
           currentQuestion={currentQuestion}
           currentQuestionIndex={currentQuestionIndex}
@@ -99,10 +100,11 @@ const QuizSubmission = () => {
           handleAnswerChange={handleAnswerChange}
           handleSubmit={handleSubmit}
         />
-      ) : !showResults ? (
+      </>) : !showResults ? (
         <QuizResults
           score={score}
           answers={answers}
+          time={timeElapsed}
           questions={questions}
           correctAnswers={correctAnswers}
           setShowResults={setShowResults}

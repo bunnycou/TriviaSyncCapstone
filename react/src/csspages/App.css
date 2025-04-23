@@ -11,10 +11,12 @@
 
 
 .main-content {
+  font-family: 'Namaku', sans-serif;
+
   flex: 1;
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
-  padding:.5vh 10vw; /* Add some padding to avoid touching the edges */
+  padding:1vh 9vw; /* Add some padding to avoid touching the edges */
   box-sizing:border-box; /* Include padding in the element's total width and height */
 }
 .background-container {
@@ -50,9 +52,75 @@
   border: 2px solid #333; /* Dark border */
   border-radius: 10px; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  font-family: Arial, sans-serif;
   color: #333;
 }
+
+
+.home-container h1.PinkGreen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {   
+  float: left;
+  width: 75%;
+}
+
+/* Right column */
+.rightcolumn {
+  float: left;
+  width: 25%;
+
+}
+
+/* Fake image */
+.fakeimg {
+  background-color: #aaa;
+  width: 80%;
+  margin-top: 10px;
+  padding: 20px;
+}
+
+/* Add a card effect for articles */
+.card {
+  background-color: #7755ff;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  padding-left: 2%;
+  padding-right: 2%;
+  margin-top: 20px;
+  margin-bottom: 4vh;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 0px 5px 5px 5px #7766ff;
+  /*text-shadow: rgba(214, 214, 214, 0.856) .5px .5px 3px, rgba(214, 214, 214, 0.856) -1px -1px 3px;*/
+}
+
+/* Clear floats after the columns */
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+
 
 /* Optional: Responsive adjustments */
 @media (max-width: 700px) {
@@ -62,4 +130,21 @@
 }
 
 
-
+ h1.PinkGreen {
+  background-color: #00dd87;
+  padding: 2vh;
+  width: 100%;
+  text-align: center;
+  font-size: 48px;
+  font-weight: bold;
+  text-shadow:2px 2px 2px #000000;
+  color: #ff0080; /* Hotter pink */
+  margin-bottom: 30px;
+  /* border-left:  4px solid rgb(0,200,255,.3);
+  border-right:  4px solid rgb(0,200,255,.3);
+  box-shadow: 0px 6px 0 0 rgb(0, 200, 255,.3); */
+  border-radius: 15px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #ff0080;
+}

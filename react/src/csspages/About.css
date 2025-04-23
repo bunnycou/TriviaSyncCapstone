@@ -1,0 +1,22 @@
+.about {
+    width: 70%;
+    margin: 1vh auto;
+
+    gap: 15vh;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10vh;
+}
+
+.group-photo {
+    width: 86%;
+    margin-bottom: 2%;
+}
+
+p.large {
+    font-size: x-large;
+}
+
+a {
+    color: mediumvioletred;
+}

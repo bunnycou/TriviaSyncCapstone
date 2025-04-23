@@ -5,7 +5,6 @@ const MiniLeaderboard = () => {
   const [miniLeaderboardData, setMiniLeaderboardData] = useState([]);
 
   useEffect(() => {
-    // Replace with your actual WebSocket server URL
     const socket = new WebSocket(`ws://${ServerIP}:8080`); // Update to local mock server
 
     socket.onopen = () => {
@@ -36,8 +35,8 @@ const MiniLeaderboard = () => {
   }, []); // Runs once on mount, updates via WebSocket
 
   return (
-    <div className="mini-leaderboard-component">
-      <h3 className="mini-leaderboard-title">Top 10 Players</h3>
+    <div className="mini-leaderboard">
+      <h2 >LeaderBoard</h2>
       <div className="mini-leaderboard-list">
         {miniLeaderboardData.length > 0 ? (
           miniLeaderboardData.map((player, index) => (
@@ -59,7 +58,7 @@ const MiniLeaderboard = () => {
             </div>
           ))
         ) : (
-          <p className="no-players">Connecting to live updates...</p>
+          <p className="mini-leaderboard-item">Connecting to live updates...</p>
         )}
       </div>
     </div>

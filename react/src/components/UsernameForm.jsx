@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UsernameForm = ({ username, setUsername, setQuizStarted }) => {
+const UsernameForm = ({ username, setUsername, setQuizStarted, fetchQuizData }) => {
   return (
     <form
       onSubmit={(e) => {
@@ -8,6 +8,7 @@ const UsernameForm = ({ username, setUsername, setQuizStarted }) => {
         if (username.trim()) {
           setUsername(username.trim());
           setQuizStarted(true);
+          fetchQuizData();
         }
       }}
     >
